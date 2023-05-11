@@ -59,9 +59,12 @@ const UserPostsContainer = styled.div`
   }
 `;
 
-const UserPosts = ({ userId, closeSidebar }) => {
+const UserPosts = ({ userId, closeSidebar, selectedUser, setSelectedUser }) => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const [editing, setEditing] = useState(false);
+  const [updatedUser, setUpdatedUser] = useState(selectedUser);
+  const [savedUser, setSavedUser] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -88,8 +91,95 @@ const UserPosts = ({ userId, closeSidebar }) => {
       });
   };
 
+  const handleSave = () => {
+    axios
+      .put(
+        `https://jsonplaceholder.typicode.com/users/${selectedUser.id}`,
+        updatedUser
+      )
+      .then((response) => {
+        setEditing(false);
+        setSavedUser(updatedUser);
+        setSelectedUser(updatedUser);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleCancel = () => {
+    setEditing(false);
+    setUpdatedUser(selectedUser);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUpdatedUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+
   return (
     <UserPostsContainer>
+      {editing ? (
+        <>
+          <label>
+            First Name:{" "}
+            <input
+              type="text"
+              name="first_name"
+              value={updatedUser.first_name}
+              onChange={handleInputChange}
+            />
+          </label>
+          <br />
+          <label>
+            Last Name:{" "}
+            <input
+              type="text"
+              name="last_name"
+              value={updatedUser.last_name}
+              onChange={handleInputChange}
+            />
+          </label>
+          <br />
+          <label>
+            Email:{" "}
+            <input
+              type="text"
+              name="email"
+              value={updatedUser.email}
+              onChange={handleInputChange}
+            />
+          </label>
+          <br />
+          <button onClick={handleSave}>Save</button>
+          <button onClick={handleCancel}>Cancel</button>
+        </>
+      ) : (
+        <>
+          <p>
+            <strong>First Name:</strong>{" "}
+            {savedUser ? savedUser.first_name : selectedUser.first_name}
+          </p>
+
+          <p>
+            <strong>Last Name:</strong>{" "}
+            {savedUser ? savedUser.last_name : selectedUser.last_name}
+          </p>
+
+          <p>
+            <strong>Email:</strong>{" "}
+            {savedUser ? savedUser.email : selectedUser.email}
+          </p>
+
+          <DeleteButton onClick={() => setEditing(true)}>
+            Edit Info
+          </DeleteButton>
+        </>
+      )}
+
       {loading ? (
         <SkeletonSidebar />
       ) : posts.length === 0 ? (

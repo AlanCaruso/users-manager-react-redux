@@ -64,6 +64,7 @@ const Users = () => {
           <UserPosts
             userId={selectedUser.id}
             closeSidebar={handleSidebarClose}
+            selectedUser={selectedUser}
           />
         )}
       </div>
