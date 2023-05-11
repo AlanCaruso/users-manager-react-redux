@@ -1,4 +1,4 @@
-# Prueba técnica de Next.js
+# Administrador de Usuarios
 
 Este es un proyecto de Next.js creado para la realización de una prueba técnica. El proyecto utiliza los endpoints de las siguientes APIs:
 
@@ -21,7 +21,7 @@ El proyecto tiene las siguientes funcionalidades:
 - Pantalla de login con validaciones de username y password.
 - Página inicial con un listado de usuarios obtenido del endpoint de "https://reqres.in/api/users".
 - Sidebar que se muestra al seleccionar un usuario y permite editar los datos del usuario, ver el listado de los posts de la persona y eliminar los posts.
-- Página de álbum que se muestra al seleccionar el menú de álbum y permite ver el listado de los usuarios y el álbum de fotos del usuario seleccionado.
+- Página de álbum que se muestra al seleccionar el menú de álbum y permite ver el listado de los usuarios y el álbum de fotos del usuario seleccionado. (Funcionabilidad en progreso)
 - Funcionalidad de logout.
 
 ## Tecnologías utilizadas
@@ -31,6 +31,10 @@ El proyecto utiliza las siguientes tecnologías:
 - Next.js
 - React
 - CSS
+- Styled Components
+- Yup
+- Axios
+- react-router-dom
 
 ## Licencia
 
