@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import Logout from "../src/app/components/LogOut";
 
 const UserListContainer = styled.div`
   display: flex;
@@ -50,17 +51,20 @@ const Users = () => {
   }, []);
 
   return (
-    <UserListContainer>
-      {users.map((user) => (
-        <UserCard key={user.id}>
-          <UserAvatar src={user.avatar} alt="user avatar" />
-          <UserName>
-            {user.first_name} {user.last_name}
-          </UserName>
-          <UserEmail>{user.email}</UserEmail>
-        </UserCard>
-      ))}
-    </UserListContainer>
+    <div>
+      <Logout />
+      <UserListContainer>
+        {users.map((user) => (
+          <UserCard key={user.id}>
+            <UserAvatar src={user.avatar} alt="user avatar" />
+            <UserName>
+              {user.first_name} {user.last_name}
+            </UserName>
+            <UserEmail>{user.email}</UserEmail>
+          </UserCard>
+        ))}
+      </UserListContainer>
+    </div>
   );
 };
 

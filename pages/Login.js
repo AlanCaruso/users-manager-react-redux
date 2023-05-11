@@ -1,5 +1,4 @@
-"use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as Yup from "yup";
@@ -61,8 +60,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
-
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+      navigate("/users");
+    }
+  }, [navigate]);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -76,6 +83,9 @@ const Login = () => {
           })
           .then((response) => {
             console.log(response);
+            const token = response.data.token;
+            localStorage.setItem("token", token); // save token to local storage
+            setToken(token); // set token to state
             navigate("/users");
           })
           .catch((error) => {
