@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Prueba técnica de Next.js
 
-## Getting Started
+Este es un proyecto de Next.js creado para la realización de una prueba técnica. El proyecto utiliza los endpoints de las siguientes APIs:
 
-First, run the development server:
+- https://reqres.in
+- https://jsonplaceholder.typicode.com
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Cómo ejecutar el proyecto
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para ejecutar el proyecto, sigue estos pasos:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Clona este repositorio en tu computadora.
+2. Abre una terminal en la carpeta del proyecto y ejecuta el comando `npm install` para instalar las dependencias necesarias.
+3. Ejecuta el comando `npm run dev` para iniciar el servidor de desarrollo.
+4. Abre tu navegador y navega a la URL `http://localhost:3000`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Funcionalidades del proyecto
 
-## Learn More
+El proyecto tiene las siguientes funcionalidades:
 
-To learn more about Next.js, take a look at the following resources:
+- Pantalla de login con validaciones de username y password.
+- Página inicial con un listado de usuarios obtenido del endpoint de "https://reqres.in/api/users".
+- Sidebar que se muestra al seleccionar un usuario y permite editar los datos del usuario, ver el listado de los posts de la persona y eliminar los posts.
+- Página de álbum que se muestra al seleccionar el menú de álbum y permite ver el listado de los usuarios y el álbum de fotos del usuario seleccionado.
+- Funcionalidad de logout.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tecnologías utilizadas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+El proyecto utiliza las siguientes tecnologías:
 
-## Deploy on Vercel
+- Next.js
+- React
+- CSS
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Licencia
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este proyecto está bajo la licencia MIT. Puedes leer el archivo LICENSE para más información.
+
+¡Gracias por revisar mi proyecto!
