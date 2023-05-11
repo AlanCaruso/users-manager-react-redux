@@ -45,6 +45,7 @@ const Skeleton = ({ count }) => {
   if (count) {
     return Array.from({ length: count }).map((_, index) => (
       <div
+        key={index}
         style={{
           display: "flex",
           flexDirection: "column",
