@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as Yup from "yup";
 import axios from "axios";
@@ -61,6 +62,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
+  const navigate = useNavigate();
+
   const handleLogin = (event) => {
     event.preventDefault();
     validationSchema
@@ -73,7 +76,7 @@ const Login = () => {
           })
           .then((response) => {
             console.log(response);
-            alert(`Logged in as ${response.data.email}`);
+            navigate("/users");
           })
           .catch((error) => {
             console.error(error);
