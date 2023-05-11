@@ -1,53 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import * as Yup from "yup";
 import axios from "axios";
-
-const LoginContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-`;
-
-const LoginHeader = styled.h2`
-  margin-bottom: 20px;
-`;
-
-const LoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-`;
-
-const LoginInput = styled.input`
-  padding: 10px;
-  margin: 10px 0;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-`;
-
-const LoginButton = styled.button`
-  padding: 10px;
-  margin-top: 20px;
-  background-color: #0077cc;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #005fa3;
-  }
-`;
-
-const LoginError = styled.div`
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-`;
+import {
+  LoginContainer,
+  LoginHeader,
+  LoginSubHeader,
+  LoginForm,
+  LoginInput,
+  LoginButton,
+  LoginError,
+} from "./LoginStyles";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -112,7 +75,11 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <LoginHeader>Login</LoginHeader>
+      <LoginHeader>Sign in</LoginHeader>
+      <LoginSubHeader>
+        Welcome back. <br />
+        Please log in to access your account.
+      </LoginSubHeader>
       <LoginForm onSubmit={handleLogin}>
         <LoginInput
           type="text"
@@ -130,7 +97,7 @@ const Login = () => {
           onChange={handleInputChange}
         />
         {errors.password && <LoginError>{errors.password}</LoginError>}
-        <LoginButton type="submit">Login</LoginButton>
+        <LoginButton type="submit">Sign in</LoginButton>
       </LoginForm>
     </LoginContainer>
   );

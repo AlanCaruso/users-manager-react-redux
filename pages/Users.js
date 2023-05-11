@@ -1,68 +1,53 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styled from "styled-components";
 import Logout from "../src/app/components/LogOut";
-
-const UserListContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
-const UserCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  width: 200px;
-  height: 250px;
-`;
-
-const UserAvatar = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-`;
-
-const UserName = styled.h3`
-  margin: 10px 0;
-`;
-
-const UserEmail = styled.p`
-  margin: 5px 0;
-`;
+import {
+  UserListContainer,
+  UserCard,
+  UserAvatar,
+  UserName,
+  UserEmail,
+} from "./UsersStyles";
+import Skeleton from "../src/app/components/Skeleton";
 
 const Users = () => {
+  const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://reqres.in/api/users")
-      .then((response) => {
-        setUsers(response.data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    setTimeout(() => {
+      axios
+        .get("https://reqres.in/api/users")
+        .then((response) => {
+          setUsers(response.data.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoading(false);
+        });
+    }, 2000);
   }, []);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#fff" }}>
       <Logout />
       <UserListContainer>
-        {users.map((user) => (
-          <UserCard key={user.id}>
-            <UserAvatar src={user.avatar} alt="user avatar" />
-            <UserName>
-              {user.first_name} {user.last_name}
-            </UserName>
-            <UserEmail>{user.email}</UserEmail>
-          </UserCard>
-        ))}
+        {loading ? (
+          <>
+            <Skeleton count={6} />
+          </>
+        ) : (
+          users.map((user) => (
+            <UserCard key={user.id}>
+              <UserAvatar src={user.avatar} alt="user avatar" />
+              <UserName>
+                {user.first_name} {user.last_name}
+              </UserName>
+              <UserEmail>{user.email}</UserEmail>
+            </UserCard>
+          ))
+        )}
       </UserListContainer>
     </div>
   );
