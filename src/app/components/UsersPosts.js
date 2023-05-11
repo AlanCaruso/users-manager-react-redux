@@ -3,6 +3,13 @@ import axios from "axios";
 import SkeletonSidebar from "./SkeletonSidebar";
 import styled, { keyframes } from "styled-components";
 
+const Icon = styled.img`
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+`;
+
 const fadeIn = keyframes`
   0% {
     opacity: 0;
@@ -14,18 +21,22 @@ const fadeIn = keyframes`
 
 const PostContainer = styled.div`
   margin-bottom: 1rem;
+  margin-top: 1rem;
   width: 80%;
   animation: ${fadeIn} 0.5s ease-in-out;
 `;
 
 const PostTitle = styled.h3`
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
+  margin-top: 1rem;
+  color: #47515d;
 `;
 
 const PostBody = styled.p`
   font-size: 0.9rem;
   line-height: 1.5;
+  color: #47515d;
 `;
 
 const DeleteButton = styled.button`
@@ -46,13 +57,13 @@ const DeleteButton = styled.button`
     box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.5);
   }
 `;
-
 const UserPostsContainer = styled.div`
   display: grid;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-
+  color: #47515d;
+  margin-top: 20px;
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
@@ -174,9 +185,11 @@ const UserPosts = ({ userId, closeSidebar, selectedUser, setSelectedUser }) => {
             {savedUser ? savedUser.email : selectedUser.email}
           </p>
 
-          <DeleteButton onClick={() => setEditing(true)}>
-            Edit Info
-          </DeleteButton>
+          <Icon
+            src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png"
+            alt="Edit Info"
+            onClick={() => setEditing(true)}
+          />
         </>
       )}
 
@@ -187,11 +200,14 @@ const UserPosts = ({ userId, closeSidebar, selectedUser, setSelectedUser }) => {
       ) : (
         posts.map((post) => (
           <PostContainer key={post.id}>
+            <hr />
             <PostTitle>{post.title}</PostTitle>
             <PostBody>{post.body}</PostBody>
-            <DeleteButton onClick={() => handleDelete(post.id)}>
-              Delete
-            </DeleteButton>
+            <Icon
+              src="https://cdn-icons-png.flaticon.com/512/7666/7666109.png"
+              alt="Delete Post"
+              onClick={() => handleDelete(post.id)}
+            />
           </PostContainer>
         ))
       )}
