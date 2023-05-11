@@ -55,7 +55,6 @@ const Skeleton = ({ count }) => {
       >
         <SkeletonContainer>
           {" "}
-          {/* Agregamos SkeletonContainer */}
           <SkeletonBlock />
         </SkeletonContainer>
         <TextBlock />
@@ -74,7 +73,6 @@ const Skeleton = ({ count }) => {
     >
       <SkeletonContainer>
         {" "}
-        {/* Agregamos SkeletonContainer */}
         <SkeletonBlock />
       </SkeletonContainer>
       <TextBlock />

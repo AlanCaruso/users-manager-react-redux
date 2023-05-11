@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 export const UserListContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
   background-color: #fff;
+  width: 100%;
+
+  &.sidebar-open {
+    height: 50px;
+  }
 `;
 
 export const UserCard = styled.div`
@@ -16,7 +22,7 @@ export const UserCard = styled.div`
   padding: 10px;
   border: none;
   border-radius: 5px;
-  width: 200px;
+  width: 100%;
   height: 250px;
   background-color: #fff;
 `;

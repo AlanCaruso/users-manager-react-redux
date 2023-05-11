@@ -4,8 +4,10 @@ import styled from "styled-components";
 
 const LogoutButton = styled.button`
   background-color: #fff;
+  border: none;
   color: #0077cc;
   border: none;
+  font-size: 1rem;
   cursor: pointer;
   float: right;
   margin: 10px;
