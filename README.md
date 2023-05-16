@@ -40,4 +40,8 @@ El proyecto utiliza las siguientes tecnologías:
 
 Este proyecto está bajo la licencia MIT. Puedes leer el archivo LICENSE para más información.
 
+Login credentials:
+- Email: eve.holt@reqres.in
+- Password: cityslicka
+
 ¡Gracias por revisar mi proyecto!
